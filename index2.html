@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <title>College Calendars</title>
+
+  <link rel='stylesheet' href='fullcalendar.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src='fullcalendar.js'></script>
+  <script> $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+    })
+
+});</script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <h1><center>College Calendars</h1>
+    <h3><center>See where your school's vacations overlap!</h3>
+
+    <h4>
+    <select name="schools">
+    	<option value="- Select a School -" selected>- Select a school -</option>
+    	<option value="Northeastern">Northeastern Universtiy</option>
+  	 	<option value="Clarkson">Clarkson University</option>
+  	 	<option value="Cornell">Cornell University</option>
+	</select>
+
+<button type="button" onclick="alert('Just wait, ok?')">See Vacations</button>
+
+</h4>
+
+<p><div id='calendar'></div></p>
+
+</body>
+
+</html>
