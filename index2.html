@@ -7,7 +7,7 @@
 
 	<style>
 
-	button{
+	.button{
 
    		font-size: 100%;
    		padding: 14px 40px;
@@ -16,8 +16,22 @@
     	transition-duration: 0.4s;
 	}
 
-	select{
-		font-size: 200%;
+	.clearButton{
+
+		font-size: 110%;
+		opacity: 0.4;
+		cursor: not-allowed;
+		color: #f44336;
+
+   		-webkit-transition-duration: 0.4s; /* Safari */
+    	transition-duration: 0.4s;
+	}
+
+	.info{
+
+		border-style: solid;
+		border-color: #58FB73;
+		border-width: thin;
 	}
 
     </style>
@@ -27,25 +41,48 @@
 	<script src='lib/moment.min.js'></script>
 	<script src='fullcalendar.js'></script>
 	<script type='text/javascript' src='gcal.js'></script>
+	<script>
+
+		var chosenSchools = new Array();  // Array of currently selected schools (global)
+
+		function inArray(needle, haystack) {
+
+			var length = haystack.length;
+
+			for (var i = 0; i < length; i++) {
+
+				if (haystack[i] == needle) return true;
+
+ 			}
+
+ 			return false;
+
+		}
+	</script>
 
 	<script> $(document).ready(function() {
 
 	    // page is now ready, initialize the calendar...
 
 	    $('#calendar').fullCalendar({
-		        // put your options and callbacks here
 
-		        googleCalendarApiKey: 'AIzaSyDYUzu29ZKEhcC4azCWs45_K91LNZjqAnE',
+		        // put options and callbacks here
 
-
-        eventSources: 
-        {
-
-        }
+		        googleCalendarApiKey: 'AIzaSyDYUzu29ZKEhcC4azCWs45_K91LNZjqAnE'
 
 	    })
 
 	});</script>
+
+	<script> 		// Sets up calendar dimensions
+
+		$(document).ready(function() {
+
+			$('#calendar').fullCalendar('option', 'aspectRatio', 1.2)
+
+		});
+
+	</script>
 
 	<script>
 
@@ -64,16 +101,74 @@
 			dict.Clarkson = "9br6pvfoee11ls9c7397es3alo@group.calendar.google.com";
 			dict['9br6pvfoee11ls9c7397es3alo@group.calendar.google.com'] = "Clarkson"
 
+			dict.Vanderbilt = "o8tqq4v0d5fg512pk3f8ltp634@group.calendar.google.com";
+			dict['o8tqq4v0d5fg512pk3f8ltp634@group.calendar.google.com'] = "Vanderbilt"
+
+			dict.UAlabama = "457fgbv5vdhivi8jal02un3n1c@group.calendar.google.com";
+			dict['457fgbv5vdhivi8jal02un3n1c@group.calendar.google.com'] = "UAlabama"
+
+			dict.NotreDame = "nmgfhbj8eehkm4csjott6upe3s@group.calendar.google.com";
+			dict['nmgfhbj8eehkm4csjott6upe3s@group.calendar.google.com'] = "NotreDame"
+
+			dict.Duke = "f4bk1dr0g6vtco2a1ulln0el5g@group.calendar.google.com";
+			dict['f4bk1dr0g6vtco2a1ulln0el5g@group.calendar.google.com'] = "Duke"
+
+			dict.UMiami = "om3psg49lpnlhlidcck23ukcjk@group.calendar.google.com";
+			dict['om3psg49lpnlhlidcck23ukcjk@group.calendar.google.com'] = "UMiami"
+
+			dict.VirginiaTech = "hjcosruvbj16jelsbsr68vbock@group.calendar.google.com";
+			dict['hjcosruvbj16jelsbsr68vbock@group.calendar.google.com'] = "VirginiaTech"
+
+			dict.UDel = "n2s5ulf96mcq1k78rmtmgj0224@group.calendar.google.com";
+			dict['n2s5ulf96mcq1k78rmtmgj0224@group.calendar.google.com'] = "UDel"
+
+			dict.UMich = "59psmqdg92dh7s4aesau1jiq54@group.calendar.google.com";
+			dict['59psmqdg92dh7s4aesau1jiq54@group.calendar.google.com'] = "UMich"
+
+
+
 			if (name != "prompt") {
 
-				$('#calendar').fullCalendar( 'addEventSource', dict[name])
+				if (inArray(name, chosenSchools)){
+
+					alert("You've already added this school!")
+
+				}
+
+				else{
+
+					chosenSchools.push(name)
+
+					$('#calendar').fullCalendar( 'addEventSource', dict[name])
+
+					$('#clearButton').css('opacity', 1.0)
+					$('#clearButton').css('cursor', 'default')
+
+				}
 
 			}
 
 			else {
+
 				alert("Please select a school to add")
+
 			}
 		}
+
+		</script>
+
+		<script>
+			
+			function clearSchools(){
+
+				$('#calendar').fullCalendar('removeEventSources', )  // Removes events from calendar
+
+				chosenSchools = [];  // Removes schools from list
+
+				$('#clearButton').css('opacity', 0.4)  // Resets clear button properties
+				$('#clearButton').css('cursor', 'not-allowed')
+
+			}
 
 		</script>
 
@@ -88,27 +183,44 @@
 	</h1>
 
 	<h3>
-		<center>See where your school's vacations overlap! 
+		<center><div class="info" id="infoText">See where your school's vacations overlap! </div>
 	</h3>
 
 	<h4><center>
+
 		<select id="schoolChoice">
 	 		<option value="prompt" selected>- Select a school -</option>
+	 		<option value="UAlabama">University of Alabama</option>
 	  		<option value="Clarkson">Clarkson University</option>
 	  		<option value="Cornell">Cornell University</option>
+	  		<option value="UDel">Universtiy of Delaware</option>
+	  		<option value="Duke">Duke University</option>
+	  		<option value="UMiami">Universtiy of Miami</option>
+	  		<option value="UMich">University of Michigan</option>
 	  		<option value="Northeastern">Northeastern Universtiy</option>
+	  		<option value="NotreDame">Universtiy of Notre Dame</option>
+	  		<option value="Vanderbilt">Vanderbilt Universtiy</option>
+	  		<option value="VirginiaTech">Virginia Tech</option>
+
 
 		</select>
 
-		<button type="button" onclick="addSchool()">Add school</button>
+		<button class="button" id="addSchool" onclick="addSchool()">Add school</button>
 
 		</center>
 
 	</h4>
 
+	<h5>
+		
+		<center><button class="clearButton" id="clearButton" onclick="clearSchools()">Clear</button></center>
+
+	</h5>
+
 	<p>
-		<div id='calendar'></div>
+		<center><div id='calendar' style="width: 80%"></div> 
 	</p>
 
 </body>
+
 </html>
