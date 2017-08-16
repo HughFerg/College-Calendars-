@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+	<title>College Calendars</title>
+
+	<style>
+
+	.button{
+
+   		font-size: 100%;
+   		padding: 14px 40px;
+
+   		-webkit-transition-duration: 0.4s; /* Safari */
+    	transition-duration: 0.4s;
+	}
+
+	.clearButton{
+
+		font-size: 110%;
+		opacity: 0.4;
+		cursor: not-allowed;
+		color: #f44336;
+
+   		-webkit-transition-duration: 0.4s; /* Safari */
+    	transition-duration: 0.4s;
+	}
+
+	.info{
+
+		border-style: solid;
+		border-width: thin;
+		border-color: #7EC6FF; 
+		width: 500px;
+		height: 100px;	
+		padding-top: 50px;
+		text-align: center;
+		margin-left: 170px;
+
+	}
+
+	.subHead{
+
+		margin-left: 170px;
+	}
+
+	.descript{
+
+		font-family: "Lucida Sans Unicode";
+		font-weight: normal;
+		font-size: 100%;
+
+		margin-left: 170px;
+	}
+
+	.select{
+
+		font-size: 200%;
+
+	}
+
+	.calendar{
+
+		margin: 0px;
+	}
+
+    </style>
+
+	<link rel='stylesheet' href='fullcalendar.css' />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+	<script src='lib/moment.min.js'></script>
+	<script src='fullcalendar.js'></script>
+	<script type='text/javascript' src='gcal.js'></script>
+	<script>
+
+		var chosenSchools = new Array();  // Array of currently selected schools (global)
+
+		function inArray(needle, haystack) {
+
+			var length = haystack.length;
+
+			for (var i = 0; i < length; i++) {
+
+				if (haystack[i] == needle) return true;
+
+ 			}
+
+ 			return false;
+
+		}
+	</script>
+
+	<script> $(document).ready(function() {
+
+	    // page is now ready, initialize the calendar...
+
+	    $('#calendar').fullCalendar({
+
+		        // put options and callbacks here
+
+		        googleCalendarApiKey: 'AIzaSyDYUzu29ZKEhcC4azCWs45_K91LNZjqAnE'
+
+	    })
+
+	});</script>
+
+	<script> 		// Sets up calendar dimensions
+
+		$(document).ready(function() {
+
+			$('#calendar').fullCalendar('option', 'aspectRatio', 1.2)
+			$('#calendar').fullCalendar('option', 'width', 90%)
+
+
+		});
+
+	</script>
+
+	<script>
+
+		function addSchool(){
+
+			var choice = document.getElementById("schoolChoice");
+			var dict = new Object();
+			var name = choice.value;
+
+			dict.Cornell = "i8mdn1h7qc0c3ear7napatqb1c@group.calendar.google.com";
+			dict['i8mdn1h7qc0c3ear7napatqb1c@group.calendar.google.com'] = "Cornell"; 
+
+			dict.Northeastern = "hughferguson25@gmail.com";
+			dict['hughferguson25@gmail.com'] = "Northeastern"
+
+			dict.Clarkson = "9br6pvfoee11ls9c7397es3alo@group.calendar.google.com";
+			dict['9br6pvfoee11ls9c7397es3alo@group.calendar.google.com'] = "Clarkson"
+
+			dict.Vanderbilt = "o8tqq4v0d5fg512pk3f8ltp634@group.calendar.google.com";
+			dict['o8tqq4v0d5fg512pk3f8ltp634@group.calendar.google.com'] = "Vanderbilt"
+
+			dict.UAlabama = "457fgbv5vdhivi8jal02un3n1c@group.calendar.google.com";
+			dict['457fgbv5vdhivi8jal02un3n1c@group.calendar.google.com'] = "UAlabama"
+
+			dict.NotreDame = "nmgfhbj8eehkm4csjott6upe3s@group.calendar.google.com";
+			dict['nmgfhbj8eehkm4csjott6upe3s@group.calendar.google.com'] = "NotreDame"
+
+			dict.Duke = "f4bk1dr0g6vtco2a1ulln0el5g@group.calendar.google.com";
+			dict['f4bk1dr0g6vtco2a1ulln0el5g@group.calendar.google.com'] = "Duke"
+
+			dict.UMiami = "om3psg49lpnlhlidcck23ukcjk@group.calendar.google.com";
+			dict['om3psg49lpnlhlidcck23ukcjk@group.calendar.google.com'] = "UMiami"
+
+			dict.VirginiaTech = "hjcosruvbj16jelsbsr68vbock@group.calendar.google.com";
+			dict['hjcosruvbj16jelsbsr68vbock@group.calendar.google.com'] = "VirginiaTech"
+
+			dict.UDel = "n2s5ulf96mcq1k78rmtmgj0224@group.calendar.google.com";
+			dict['n2s5ulf96mcq1k78rmtmgj0224@group.calendar.google.com'] = "UDel"
+
+			dict.UMich = "59psmqdg92dh7s4aesau1jiq54@group.calendar.google.com";
+			dict['59psmqdg92dh7s4aesau1jiq54@group.calendar.google.com'] = "UMich"
+
+			dict.Bentley = "1a3fdkkn7jaujpaedjbn3m0dbk@group.calendar.google.com";
+			dict['1a3fdkkn7jaujpaedjbn3m0dbk@group.calendar.google.com'] = "Bentley"
+
+			dict.Adelphi = "d2adbcufmjq9ho2rcg9c8kul7g@group.calendar.google.com";
+			dict['d2adbcufmjq9ho2rcg9c8kul7g@group.calendar.google.com'] = "Adelphi"
+
+			dict.BostonCollege = "d954e5klsk4v06ud67n2kiae3s@group.calendar.google.com";
+			dict['d954e5klsk4v06ud67n2kiae3s@group.calendar.google.com'] = "BostonCollege"
+
+			dict.GapYear = "34hdhf5c096kg9mdou0l715reg@group.calendar.google.com";
+			dict['34hdhf5c096kg9mdou0l715reg@group.calendar.google.com'] = "GapYear"
+
+			dict.BU = "3ik5kph8bs1mc22l7g3djr4g6c@group.calendar.google.com";
+			dict['3ik5kph8bs1mc22l7g3djr4g6c@group.calendar.google.com'] = "BU"
+
+			if (name != "prompt") {
+
+				if (inArray(name, chosenSchools)){
+
+					alert("You've already added this school!")
+
+				}
+
+				else{
+
+					chosenSchools.push(name)
+
+					$('#calendar').fullCalendar( 'addEventSource', dict[name])
+
+					$('#clearButton').css('opacity', 1.0)
+					$('#clearButton').css('cursor', 'default')
+
+				}
+
+			}
+
+			else {
+
+				alert("Please select a school to add")
+
+			}
+		}
+
+		</script>
+
+		<script>
+			
+			function clearSchools(){
+
+				$('#calendar').fullCalendar('removeEventSources', )  // Removes events from calendar
+
+				chosenSchools = [];  // Removes schools from list
+
+				$('#clearButton').css('opacity', 0.4)  // Resets clear button properties
+				$('#clearButton').css('cursor', 'not-allowed')
+
+			}
+
+		</script>
+
+	<link rel="stylesheet" href="css/style.css">
+
+		<script>
+		
+		     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		     ga('create', 'UA-104751267-1', 'auto');
+		     ga('send', 'pageview');
+   
+		</script>
+
+</head>
+
+<body>
+
+	<h1 class="info" id="titleText">
+
+		 <strong style= "color: #7EC6FF;">C</strong>ollege <strong style= "color: #7EC6FF;">C</strong>alendars
+
+	</h1>
+
+	<h3 class="subHead">
+
+		<div id="infoText">See where your school's vacations overlap!</div>
+
+	</h3>
+
+	<h4 class="descript">
+		College Calendars was created to let college students coordinate their academic schedules with eachother.<br> 
+		Everyone has different breaks and vacations- College Calendars makes it easy to compare, coordinate, and plan!
+	</h4>
+
+	<h4><center>
+
+		<select class="select" id="schoolChoice">
+	 		<option value="prompt" selected>- Select a school -</option>
+	 		<option value="Adelphi">Adelphi Universtiy</option>
+	 		<option value="UAlabama">University of Alabama</option>
+	 		<option value="Bentley">Bentley Universtiy</option>
+	 		<option value="BostonCollege">Boston College</option>
+	 		<option value="BU">Boston University</option>
+	  		<option value="Clarkson">Clarkson University</option>
+	  		<option value="Cornell">Cornell University</option>
+	  		<option value="UDel">Universtiy of Delaware</option>
+	  		<option value="Duke">Duke University</option>	  		
+	  		<option value="GapYear">Gap Year!</option>
+	  		<option value="UMiami">Universtiy of Miami</option>
+	  		<option value="UMich">University of Michigan</option>
+	  		<option value="Northeastern">Northeastern Universtiy</option>
+	  		<option value="NotreDame">Universtiy of Notre Dame</option>
+	  		<option value="Vanderbilt">Vanderbilt Universtiy</option>
+	  		<option value="VirginiaTech">Virginia Tech</option>
+
+
+		</select>
+
+		<button class="button" id="addSchool" onclick="addSchool()">Add school</button>
+
+		</center>
+
+	</h4>
+
+	<h5>
+		
+		<center><button class="clearButton" id="clearButton" onclick="clearSchools()">Clear</button>s
+
+	</h5>
+
+	<p>
+		<center><div id='calendar' style="width: 80%" class="calendar"></div> 
+	</p>
+
+</body>
+
+</html>
