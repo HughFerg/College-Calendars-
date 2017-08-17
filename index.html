@@ -208,6 +208,9 @@
 			dict.Brown - "1lg0ct5gcle1afaonmvtsjqpa4@group.calendar.google.com";
 			dict['1lg0ct5gcle1afaonmvtsjqpa4@group.calendar.google.com'] = "Brown"
 
+			dict.UBuffalo = "9g94r0qan60d0c72ol2dn4beuc@group.calendar.google.com";
+			dict['9g94r0qan60d0c72ol2dn4beuc@group.calendar.google.com'] = "UBuffalo"
+
 			if (name != "prompt") {
 
 				if (inArray(name, chosenSchools)){
@@ -218,12 +221,14 @@
 
 				else{
 
-					chosenSchools.push(name)
+					chosenSchools.push(name). // Adds school to list of chosen schools
 
-					$('#calendar').fullCalendar( 'addEventSource', dict[name])
+					$('#calendar').fullCalendar( 'addEventSource', dict[name])  // Adds school's event source
 
-					$('#clearButton').css('opacity', 1.0)
+					$('#clearButton').css('opacity', 1.0)	// Sets clear button properties
 					$('#clearButton').css('cursor', 'default')
+
+					// Sets text of added schools
 
 				}
 
@@ -279,12 +284,13 @@
 
 	<h3 class="subHead">
 
-		<div id="infoText">See where your school's vacations overlap!</div>
+		<div id="infoText">See where your school's vacations overlap!<br>
+		New features and colleges added every day.</div>
 
 	</h3>
 
 	<h4 class="descript">
-		College Calendars was created to let college students coordinate their academic schedules with eachother.<br> 
+		College Calendars was created to let college students coordinate their academic schedules with each other.<br> 
 		Everyone has different breaks and vacations- College Calendars makes it easy to compare, coordinate, and plan!
 	</h4>
 
@@ -298,6 +304,7 @@
 	 		<option value="BostonCollege">Boston College</option>
 	 		<option value="BU">Boston University</option>
 	 		<option value="Brown">Brown University</option>	
+	 		<option value="UBuffalo">University at Buffalo</option>
 	  		<option value="Clarkson">Clarkson University</option>
 	  		<option value="Columbia">Columbia University</option>
 	  		<option value="Cornell">Cornell University</option>
@@ -336,7 +343,9 @@
 	<p>
 		<center><div id='calendar' style="width: 80%" class="calendar"></div> 
 
-		<center><br>*All calendars apply to undergraduate schedules only. Please excuse any inaccuracies in schedules. Created by Hugh Ferguson, 2017</center>
+		<br><hr style="border: 1px solid #7EC6FF;">
+
+		<center><br>*All calendars apply to undergraduate schedules only. Calendars do not include reading days, two-day weekends,*<br>*commencement ceremonies, graduate school events, or athletic events.*<br>*Please excuse any inaccuracies in schedules.* <br>*Created by Hugh Ferguson, 2017*</center>
 	</p>
 
 </body>
