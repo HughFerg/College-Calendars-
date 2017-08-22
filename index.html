@@ -237,6 +237,20 @@
 			dict.UCLA = "ebbdckfn3pvni6het9g7a368es@group.calendar.google.com";
 			dict['ebbdckfn3pvni6het9g7a368es@group.calendar.google.com'] = "UCLA"
 
+			dict.SacredHeart = "v501e7mocrcultdb5ii57ca9i0@group.calendar.google.com";
+			dict['v501e7mocrcultdb5ii57ca9i0@group.calendar.google.com'] = "SacredHeart"
+
+			dict.Tufts = "5684p66n3vvccnt1almsptj0cs@group.calendar.google.com";
+			dict['5684p66n3vvccnt1almsptj0cs@group.calendar.google.com'] = "Tufts"
+
+			dict.UNC = "mce1t8l1ofm9ltfbgmvvim8jec@group.calendar.google.com";
+			dict['mce1t8l1ofm9ltfbgmvvim8jec@group.calendar.google.com'] = "UNC"
+
+			dict.UCB = "9mr41glqq14a89rd0esnsoords@group.calendar.google.com";
+			dict['9mr41glqq14a89rd0esnsoords@group.calendar.google.com'] = "UCB"
+
+			dict.RWU = "cg6vskuko1fb4paibismfdq8nk@group.calendar.google.com";
+			dict['cg6vskuko1fb4paibismfdq8nk@group.calendar.google.com'] = "RWU"
 
 			if (name != "prompt") {
 
@@ -248,12 +262,14 @@
 
 				else{
 
-					chosenSchools.push(name)    // Adding new school
+					chosenSchools.push(name)    // Adding new school to array of schools
 
-					$('#calendar').fullCalendar( 'addEventSource', dict[name])
+					$('#calendar').fullCalendar( 'addEventSource', dict[name])    // Adding new school to calendar
 
-					$('#clearButton').css('opacity', 1.0)
+					$('#clearButton').css('opacity', 1.0)    // Sets clear button to active
 					$('#clearButton').css('cursor', 'default') 
+
+					$('#calendar').fullcalendar('')
 
 					}
 
@@ -274,7 +290,7 @@
 
 				$('#calendar').fullCalendar('removeEventSources', )  // Removes events from calendar
 
-				chosenSchools = [];  // Removes schools from list
+				chosenSchools = [];  // Removes schools from array 
 
 				$('#clearButton').css('opacity', 0.4)  // Resets clear button properties
 				$('#clearButton').css('cursor', 'not-allowed')
@@ -335,7 +351,8 @@
 	 		<option value="BostonCollege">Boston College</option>
 	 		<option value="BU">Boston University</option> 	
 	 		<option value="UBuffalo">University at Buffalo</option>
-	 		<option value="UCLA">University of California, Los Angeles</option>	
+	 		<option value="UCB">UC Berkeley</option>
+	 		<option value="UCLA">UC Los Angeles</option>	
 	 		<option value="UCF">University of Central Florida</option>
 	  		<option value="Clarkson">Clarkson University</option>
 	  		<option value="Columbia">Columbia University</option>
@@ -348,16 +365,20 @@
 	  		<option value="GapYear">Gap Year!</option>
 	  		<option value="Harvard">Harvard University</option>	
 	  		<option value="UMiami">Universtiy of Miami</option>
+	  		<option value="UNC">UNC Chapel Hill</option>
 	  		<option value="UMich">University of Michigan</option>
 	  		<option value="Northeastern">Northeastern Universtiy</option>
 	  		<option value="NotreDame">Universtiy of Notre Dame</option>
 	  		<option value="OhioState">Ohio State University</option>
 	  		<option value="PennState">Pennsylvania State University</option>
 	  		<option value="Quinnipiac">Quinnipiac Universtiy</option>	
+	  		<option value="RWU">Roger Williams University</option>
+	  		<option value="SacredHeart">Sacred Heart Universtiy</option>
 	  		<option value="Stanford">Stanford University</option>
 	   		<option value="SBU">Stony Brook University</option>
 	   		<option value="TexasAM">Texas A&M University</option>
 	   		<option value="UTAustin">University of Texas, Austin</option>
+	   		<option value="Tufts">Tufts University</option>
 	  		<option value="Vanderbilt">Vanderbilt Universtiy</option>
 	  		<option value="UVM">University of Vermont</option>
 	  		<option value="VirginiaTech">Virginia Tech</option>
@@ -382,7 +403,7 @@
 
 		<br><hr style="border: 1px solid #7EC6FF;">
 
-		<center><br>*All calendars apply to 2017-2018 undergraduate schedules only.*<br>*Calendars do not include reading days, two-day weekends, commencement ceremonies,*<br>*Graduate school events, or athletic events.*<br>*Please excuse any inaccuracies in schedules.* <br>*Not yet optimized for mobile*<br>*Created by Hugh Ferguson 2017*</center>
+		<center><br>*All calendars apply to 2017-2018 undergraduate schedules only.*<br>*Calendars do not include reading days, two-day weekends, commencement ceremonies,*<br>*Graduate school events, or athletic events.*<br>*Please excuse any inaccuracies in schedules.* <br>*Not yet optimized for Chrome, IE9, or mobile*<br>*Created by Hugh Ferguson 2017*</center>
 		
 	</p>
 
