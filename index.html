@@ -84,6 +84,13 @@
 
 		var chosenSchools = new Array();  // Array of currently selected schools (global)
 
+		var eventSources = new Array();
+
+		eventSources[0] = [{
+			"googleCalendarId":"i8mdn1h7qc0c3ear7napatqb1c@group.calendar.google.com",
+			"color": "#B31B1B"
+		}]
+
 		function inArray(needle, haystack) {
 
 			var length = haystack.length;
@@ -255,6 +262,9 @@
 			dict.SUNYCortland = "fi2oj7cu9u7hitmqtrp40jroao@group.calendar.google.com";
 			dict['fi2oj7cu9u7hitmqtrp40jroao@group.calendar.google.com'] = "SUNYCortland"
 
+			dict.URI = "p7mu2356mgvku7ihftki6oi1l8@group.calendar.google.com";
+			dict['p7mu2356mgvku7ihftki6oi1l8@group.calendar.google.com'] = "URI"
+
 			if (name != "prompt") {
 
 				if (inArray(name, chosenSchools)){    // If school already added
@@ -269,10 +279,10 @@
 
 					$('#calendar').fullCalendar( 'addEventSource', dict[name])    // Adding new school to calendar
 
+					$('calendar').fullcalendar( 'addEventSource', eventSources[0])
+
 					$('#clearButton').css('opacity', 1.0)    // Sets clear button to active
 					$('#clearButton').css('cursor', 'default') 
-
-					$('#calendar').fullcalendar('')
 
 					}
 
@@ -376,6 +386,7 @@
 	  		<option value="OhioState">Ohio State University</option>
 	  		<option value="PennState">Pennsylvania State University</option>
 	  		<option value="Quinnipiac">Quinnipiac Universtiy</option>	
+	  		<option value="URI">University of Rhode Island</option>
 	  		<option value="RWU">Roger Williams University</option>
 	  		<option value="SacredHeart">Sacred Heart Universtiy</option>
 	  		<option value="Stanford">Stanford University</option>
