@@ -84,13 +84,6 @@
 
 		var chosenSchools = new Array();  // Array of currently selected schools (global)
 
-		var eventSources = new Array();
-
-		eventSources[0] = [{
-			"googleCalendarId":"i8mdn1h7qc0c3ear7napatqb1c@group.calendar.google.com",
-			"color": "#B31B1B"
-		}]
-
 		function inArray(needle, haystack) {
 
 			var length = haystack.length;
@@ -278,8 +271,6 @@
 					chosenSchools.push(name)    // Adding new school to array of schools
 
 					$('#calendar').fullCalendar( 'addEventSource', dict[name])    // Adding new school to calendar
-
-					$('calendar').fullcalendar( 'addEventSource', eventSources[0])
 
 					$('#clearButton').css('opacity', 1.0)    // Sets clear button to active
 					$('#clearButton').css('cursor', 'default') 
