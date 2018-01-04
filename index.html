@@ -108,7 +108,9 @@
 		}
 	</script>
 
-	<script> $(document).ready(function() {
+	<script>
+
+	$(document).ready(function() {
 
 	    // page is now ready, initialize the calendar...
 
@@ -138,9 +140,8 @@
 
 		function addSchool(){
 
-			var choice = document.getElementById("schoolChoice");   // Array holding all schools in the current calendar
+			var name = document.getElementById("schoolChoice").value   // Array holding all schools in the current calendar
 			var dict = new Object();
-			var name = choice.value;
 
 			dict.Cornell = "i8mdn1h7qc0c3ear7napatqb1c@group.calendar.google.com";
 			dict['i8mdn1h7qc0c3ear7napatqb1c@group.calendar.google.com'] = "Cornell";
